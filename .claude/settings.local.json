@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.wonderplugin.com)",
+      "Bash(claude mcp:*)",
+      "mcp__e953c1e3-0f8b-42ac-988a-a76c42eceb50__deploy_to_vercel",
+      "Bash(vercel:*)"
+    ]
+  }
+}
