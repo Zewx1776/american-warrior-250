@@ -215,6 +215,104 @@
     }
     .nav-cta:hover { background: var(--gold); color: var(--black); }
 
+    /* ─── NAV DROPDOWN ───────────────────────────────────────────── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle {
+      font-family: var(--font-head);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0;
+      transition: color 0.15s;
+    }
+    .nav-dropdown-toggle:hover,
+    .nav-dropdown.active .nav-dropdown-toggle { color: var(--gold); }
+    .dropdown-arrow {
+      font-size: 9px;
+      line-height: 1;
+      display: inline-block;
+      transition: transform 0.15s cubic-bezier(0.19,1,0.22,1);
+    }
+    .nav-dropdown.active .dropdown-arrow { transform: rotate(180deg); }
+
+    /* Portal-positioned dropdown — JS sets top/left via fixed */
+    .nav-dropdown-menu {
+      position: fixed;
+      list-style: none;
+      padding: 6px;
+      min-width: 158px;
+      border-radius: 14px;
+      border: 1px solid rgba(200,168,75,0.18);
+      background: rgba(6,6,6,0.97);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.04) inset;
+      z-index: 9999;
+      /* closed state */
+      opacity: 0;
+      transform-origin: top center;
+      transform: scaleY(0.92) translateY(-6px);
+      transition: opacity 0.1s ease, transform 0.14s cubic-bezier(0.19,1,0.22,1);
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .nav-dropdown-menu.eras-open {
+      opacity: 1;
+      transform: scaleY(1) translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Sliding proximity-hover indicator (injected by JS) */
+    .eras-hover-indicator {
+      position: absolute;
+      border-radius: 9px;
+      background: rgba(245,209,115,0.07);
+      pointer-events: none;
+      opacity: 0;
+      transition:
+        top    0.1s  cubic-bezier(0.19,1,0.22,1),
+        left   0.1s  cubic-bezier(0.19,1,0.22,1),
+        width  0.1s  cubic-bezier(0.19,1,0.22,1),
+        height 0.08s cubic-bezier(0.19,1,0.22,1),
+        opacity 0.06s ease;
+    }
+    .eras-hover-indicator.vis { opacity: 1; }
+
+    /* Dropdown items */
+    .nav-dropdown-menu li { position: relative; z-index: 1; }
+    .nav-dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      border-radius: 9px;
+      font-family: var(--font-head);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      white-space: nowrap;
+      transition: color 0.08s ease;
+    }
+    .nav-dropdown-menu li a:hover { color: var(--gold); }
+
+    .mobile-menu-label {
+      font-family: var(--font-head);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      padding: 4px 0 8px;
+      display: block;
+      border-bottom: 1px solid rgba(200,168,75,0.1);
+      margin-bottom: 8px;
+    }
+
     /* ─── HERO ───────────────────────────────────────────────────── */
     .hero {
       position: relative;
@@ -1435,8 +1533,16 @@
       <img src="swinglogo.svg" alt="Swampfox Optics" />
     </a>
     <ul class="nav-links">
-      <li><a href="#gwot">The GWOT Era</a></li>
-      <li><a href="#vietnam">The Vietnam Era</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Eras <span class="dropdown-arrow" aria-hidden="true">▾</span>
+        </button>
+        <ul class="nav-dropdown-menu" role="menu">
+          <li role="none"><a href="#wwii" role="menuitem">WWII</a></li>
+          <li role="none"><a href="#gwot" role="menuitem">GWOT</a></li>
+          <li role="none"><a href="#vietnam" role="menuitem">Vietnam</a></li>
+        </ul>
+      </li>
       <li><a href="#fafo">Uncle FAFO</a></li>
       <li><a href="#colonial">Colonial Roots</a></li>
       <li><a href="#collection">Full Collection</a></li>
@@ -1452,8 +1558,10 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="#gwot">The GWOT Era</a></li>
-      <li><a href="#vietnam">The Vietnam Era</a></li>
+      <li><span class="mobile-menu-label">Eras</span></li>
+      <li><a href="#wwii">WWII</a></li>
+      <li><a href="#gwot">GWOT</a></li>
+      <li><a href="#vietnam">Vietnam</a></li>
       <li><a href="#fafo">Uncle FAFO</a></li>
       <li><a href="#colonial">Colonial Roots</a></li>
       <li><a href="#collection">Full Collection</a></li>
@@ -1703,6 +1811,78 @@
     </div>
   </section>
 
+  <!-- ─── WWII ERA SECTION ─────────────────────────────────────────── -->
+  <section class="era-section" id="wwii" aria-labelledby="wwii-head">
+    <div class="container">
+      <div class="era-header reveal">
+        <p class="era-badge">Arc Three</p>
+        <h2 id="wwii-head">
+          <span class="gold">WWII</span><br />Warrior
+        </h2>
+        <p class="era-date">World War II · 1941–1945</p>
+        <p class="era-desc">
+          From the volcanic sands of Iwo Jima to the hedgerows of Normandy, the Greatest Generation answered the call when the world's freedom hung in the balance. Against the most formidable war machine in history, American warriors crossed every ocean and stormed every beach — proving once more that tyranny has a shelf life.
+        </p>
+      </div>
+
+      <!-- WWII Warrior Pair -->
+      <div class="product-pair">
+        <!-- Visual -->
+        <div class="product-visual">
+          <div class="product-visual-inner">
+            <img class="product-main-img" src="product photos/tshirts-modelshots/wwii-backmain.jpg" alt="WWII Warrior T-Shirt - back design" loading="lazy" />
+            <img class="product-patch-badge" src="product photos/patches-carousel/wwii-main.jpg" alt="WWII Warrior patch" loading="lazy" />
+            <div class="product-visual-overlay" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="product-info">
+          <span class="product-number" aria-hidden="true">07</span>
+          <p class="product-era-tag reveal">Arc Three · WWII Era</p>
+          <h3 class="product-name reveal delay-1">WWII Warrior</h3>
+          <p class="product-tagline reveal delay-2">The Greatest Generation · Limited Edition</p>
+          <p class="product-copy reveal delay-2">
+            <strong>From Normandy to Iwo Jima, they carried the weight of the free world.</strong> The Greatest Generation answered the call when the outcome wasn't guaranteed — storming fortified beaches, fighting through frozen forests, raising the flag on sulfuric rock. They were draftees, volunteers, and farmboys who became the most lethal force the world had ever seen.
+          </p>
+          <p class="product-copy reveal delay-3">
+            This design honors the warriors who turned the tide of history. The men who knew the stakes, shouldered the rifle, and refused to let freedom fail. <strong>Greatest generation. Greatest sacrifice. Greatest victory.</strong>
+          </p>
+
+          <div class="product-items reveal delay-3">
+            <a href="https://www.swampfoxoptics.com/world-war-ii-warrior-t-shirt" class="product-item-pill">
+              <span class="pill-type">T-Shirt</span>
+              <span class="pill-price">$24.99</span>
+            </a>
+            <a href="https://www.swampfoxoptics.com/wwii-warrior-patch" class="product-item-pill">
+              <span class="pill-type">PVC Patch</span>
+              <span class="pill-price">$6.99</span>
+            </a>
+          </div>
+
+          <div class="product-ctas reveal delay-4">
+            <a href="https://www.swampfoxoptics.com/world-war-ii-warrior-t-shirt" class="btn-product-primary">Get the Shirt</a>
+            <a href="https://www.swampfoxoptics.com/wwii-warrior-patch" class="btn-product-secondary">Get the Patch</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── WWII PULLQUOTE ────────────────────────────────────────────── -->
+  <section class="pullquote-section" style="background:var(--charcoal); padding: 120px 0 70px;" aria-label="WWII quote">
+    <div class="container">
+      <div class="pullquote-inner reveal">
+        <div class="pullquote-line" aria-hidden="true"></div>
+        <blockquote>
+          <em>"Uncommon valor</em><br />was a common virtue."
+        </blockquote>
+        <cite>Admiral Chester Nimitz · Battle of Iwo Jima · 1945</cite>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── VIETNAM ERA SECTION ──────────────────────────────────────── -->
   <section class="era-section" id="vietnam" aria-labelledby="vietnam-head">
     <div class="container">
@@ -1927,6 +2107,36 @@
     </div>
 
     <div class="collection-grid">
+
+      <!-- WWII Shirt -->
+      <a href="https://www.swampfoxoptics.com/world-war-ii-warrior-t-shirt" class="grid-item" aria-label="Shop WWII Warrior T-Shirt - $24.99">
+        <div class="grid-item-img">
+          <img src="product photos/tshirts-carousel/wwii-backmain.jpg" alt="WWII Warrior T-Shirt back" loading="lazy" />
+          <div class="grid-item-overlay"></div>
+          <div class="grid-item-hover-cta">
+            <span class="btn-product-primary">Shop Now</span>
+          </div>
+        </div>
+        <div class="grid-item-info">
+          <p class="grid-item-name">WWII Warrior Tee</p>
+          <p class="grid-item-price">$24.99</p>
+        </div>
+      </a>
+
+      <!-- WWII Patch -->
+      <a href="https://www.swampfoxoptics.com/wwii-warrior-patch" class="grid-item" aria-label="Shop WWII Warrior Patch - $6.99">
+        <div class="grid-item-img">
+          <img src="product photos/patches-carousel/wwii-main.jpg" alt="WWII Warrior PVC Patch" loading="lazy" />
+          <div class="grid-item-overlay"></div>
+          <div class="grid-item-hover-cta">
+            <span class="btn-product-primary">Shop Now</span>
+          </div>
+        </div>
+        <div class="grid-item-info">
+          <p class="grid-item-name">WWII Warrior Patch</p>
+          <p class="grid-item-price">$6.99</p>
+        </div>
+      </a>
 
       <!-- Vietnam Shirt -->
       <a href="https://www.swampfoxoptics.com/vietnam-warrior-t-shirt" class="grid-item" aria-label="Shop Vietnam Warrior T-Shirt - $24.99">
@@ -2202,6 +2412,7 @@
           <p class="footer-col-head">Shop</p>
           <ul class="footer-links">
             <li><a href="https://www.swampfoxoptics.com/gearapparel">Full Collection</a></li>
+            <li><a href="https://www.swampfoxoptics.com/world-war-ii-warrior-t-shirt">WWII Warrior Tee</a></li>
             <li><a href="https://www.swampfoxoptics.com/american-warrior-t-shirt">American Warrior Tee</a></li>
             <li><a href="https://www.swampfoxoptics.com/gwot-warrior-t-shirt">GWOT Warrior Tee</a></li>
             <li><a href="https://www.swampfoxoptics.com/uncle-fafo">Uncle FAFO Tee</a></li>
@@ -2212,6 +2423,7 @@
         <div>
           <p class="footer-col-head">Patches</p>
           <ul class="footer-links">
+            <li><a href="https://www.swampfoxoptics.com/wwii-warrior-patch">WWII Warrior Patch</a></li>
             <li><a href="https://www.swampfoxoptics.com/american-warrior-patch">American Warrior Patch</a></li>
             <li><a href="https://www.swampfoxoptics.com/gwot-patch">GWOT Warrior Patch</a></li>
             <li><a href="https://www.swampfoxoptics.com/uncle-fafo-patch">Uncle FAFO Patch</a></li>
@@ -2255,6 +2467,93 @@
 
   <!-- ─── SCRIPTS ────────────────────────────────────────────────────── -->
   <script>
+    /* ── Eras dropdown — proximity hover + spring animation ─── */
+    (function () {
+      const dropdown  = document.querySelector('.nav-dropdown');
+      const toggle    = document.querySelector('.nav-dropdown-toggle');
+      const menu      = document.querySelector('.nav-dropdown-menu');
+      if (!dropdown || !toggle || !menu) return;
+
+      // Inject the sliding hover indicator
+      const indicator = document.createElement('div');
+      indicator.className = 'eras-hover-indicator';
+      menu.appendChild(indicator);
+
+      let isOpen = false;
+      let rafId  = null;
+      const items = Array.from(menu.querySelectorAll('li'));
+
+      function positionMenu() {
+        const tr = toggle.getBoundingClientRect();
+        const mw = menu.getBoundingClientRect().width || 158;
+        menu.style.top  = (tr.bottom + 8) + 'px';
+        menu.style.left = Math.round(tr.left + tr.width / 2 - mw / 2) + 'px';
+      }
+
+      function openMenu() {
+        isOpen = true;
+        positionMenu();
+        menu.getBoundingClientRect();          // force reflow → triggers CSS transition
+        menu.classList.add('eras-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        dropdown.classList.add('active');
+      }
+
+      function closeMenu() {
+        isOpen = false;
+        menu.classList.remove('eras-open');
+        indicator.classList.remove('vis');
+        toggle.setAttribute('aria-expanded', 'false');
+        dropdown.classList.remove('active');
+      }
+
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (isOpen && !dropdown.contains(e.target)) closeMenu();
+      });
+
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen) { closeMenu(); toggle.focus(); }
+      });
+
+      window.addEventListener('resize', () => { if (isOpen) closeMenu(); }, { passive: true });
+
+      // Proximity hover — glides the indicator to the nearest item
+      menu.addEventListener('mousemove', (e) => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          rafId = null;
+          const menuRect = menu.getBoundingClientRect();
+          let closest = null, minDist = Infinity;
+          for (const item of items) {
+            const r   = item.getBoundingClientRect();
+            const mid = r.top + r.height / 2;
+            const d   = Math.abs(e.clientY - mid);
+            if (d < minDist) { minDist = d; closest = item; }
+          }
+          if (closest) {
+            const r = closest.getBoundingClientRect();
+            indicator.style.top    = (r.top    - menuRect.top    + menu.scrollTop)  + 'px';
+            indicator.style.left   = (r.left   - menuRect.left   + menu.scrollLeft) + 'px';
+            indicator.style.width  = r.width  + 'px';
+            indicator.style.height = r.height + 'px';
+            indicator.classList.add('vis');
+          }
+        });
+      });
+
+      menu.addEventListener('mouseleave', () => {
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        indicator.classList.remove('vis');
+      });
+    }());
+
     /* ── Nav scroll state ─────────────────────────────────────── */
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
