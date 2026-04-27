@@ -1319,6 +1319,136 @@
       font-style: normal;
     }
 
+    /* ─── SECTION: STORIES BLOG FEED ────────────────────────────── */
+    .stories-section {
+      background: var(--charcoal);
+      padding: 120px 0;
+    }
+    .stories-section:has(.stories-grid:empty) { display: none; }
+
+    .stories-section .section-header {
+      max-width: 720px;
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+    .stories-section .section-header h2 {
+      font-family: var(--font-head);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .stories-section .section-sub {
+      font-family: var(--font-body);
+      color: var(--gray-300);
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    @media (max-width: 768px) {
+      .stories-grid { grid-template-columns: 1fr; }
+    }
+
+    .story-card {
+      display: block;
+      background: var(--gray-800);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--gray-700);
+      color: var(--white);
+      text-decoration: none;
+      transition: transform 0.4s var(--ease-out-expo), border-color 0.4s var(--ease-out-expo);
+    }
+    .story-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .story-card-image {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+    .story-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease-out-expo);
+    }
+    .story-card:hover .story-card-image img {
+      transform: scale(1.05);
+    }
+
+    .story-card-body {
+      padding: 24px 24px 28px;
+    }
+    .story-card-tag {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .story-card-title {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 500;
+      text-transform: uppercase;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .story-card-excerpt {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--gray-300);
+      margin-bottom: 16px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .story-card-date {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gray-500);
+    }
+
+    .stories-view-all {
+      display: block;
+      text-align: center;
+      margin-top: 56px;
+      color: var(--gold);
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      transition: color 0.3s;
+    }
+    .stories-view-all:hover { color: var(--gold-light); }
+
     /* ─── CTA BANNER ─────────────────────────────────────────────── */
     .cta-banner {
       padding: 120px 0;
@@ -1546,6 +1676,7 @@
       <li><a href="#fafo">Uncle FAFO</a></li>
       <li><a href="#colonial">Colonial Roots</a></li>
       <li><a href="#collection">Full Collection</a></li>
+      <li><a href="https://www.swampfoxoptics.com/blog?category=american+warrior" target="_blank" rel="noopener">Stories</a></li>
     </ul>
     <a href="https://www.swampfoxoptics.com/gearapparel" class="nav-cta" aria-label="Shop the collection">Shop Now</a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -1565,6 +1696,7 @@
       <li><a href="#fafo">Uncle FAFO</a></li>
       <li><a href="#colonial">Colonial Roots</a></li>
       <li><a href="#collection">Full Collection</a></li>
+      <li><a href="https://www.swampfoxoptics.com/blog?category=american+warrior" target="_blank" rel="noopener">Stories</a></li>
     </ul>
     <a href="https://www.swampfoxoptics.com/gearapparel" class="nav-cta" aria-label="Shop the collection">Shop Now</a>
   </div>
@@ -2363,6 +2495,57 @@
           </a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ─────────── STORIES (American Warrior blog feed) ─────────── -->
+  <section class="stories-section" id="stories" aria-labelledby="stories-head">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Field Notes · The Long Watch</p>
+        <h2 id="stories-head">Stories from the Warrior</h2>
+        <p class="section-sub">Two and a half centuries of grit, gear, and the men who carried them.</p>
+      </div>
+      <div class="stories-grid">
+        <!-- POSTS_INJECT_START -->
+        <a class="story-card reveal delay-1" href="https://www.swampfoxoptics.com/stg-44-first-assault-rifle-history" target="_blank" rel="noopener">
+          <div class="story-card-image">
+            <img src="https://cdn.sanity.io/images/21lfjblb/production/da5ae003f58fa8dfb4dc9d7dbc25a11b40614a11-1280x1280.jpg?w=800&auto=format" alt="The First Assault Rifle: The StG 44" loading="lazy" />
+          </div>
+          <div class="story-card-body">
+            <span class="story-card-tag">American Warrior</span>
+            <h3 class="story-card-title">The First Assault Rifle: The StG 44</h3>
+            <p class="story-card-excerpt">The StG 44 was the world's first true assault rifle. We break down how Hugo Schmeisser's intermediate cartridge concept changed infantry combat forever, and how its logic runs directly from WWII to the M4 carbine American soldiers carry today.</p>
+            <time class="story-card-date" datetime="2026-04-21T21:03:08.696Z">APR 21, 2026</time>
+          </div>
+        </a>
+        <a class="story-card reveal delay-2" href="https://www.swampfoxoptics.com/wwii-optics-role-of-optics-world-war-2" target="_blank" rel="noopener">
+          <div class="story-card-image">
+            <img src="https://cdn.sanity.io/images/21lfjblb/production/07a483a2599906bf4ab25bb1b008a62a1ffc6e8e-1280x1280.jpg?w=800&auto=format" alt="The Role of Optics in World War II" loading="lazy" />
+          </div>
+          <div class="story-card-body">
+            <span class="story-card-tag">American Warrior</span>
+            <h3 class="story-card-title">The Role of Optics in World War II</h3>
+            <p class="story-card-excerpt">In a global war defined by millions of infantrymen, a single piece of precision glass could hold a frontline or doom a tank crew. Explore the history of World War II optics, the fatal flaws in American sniper doctrine, and how early scopes laid the groundwork for today's tactical battlefield.</p>
+            <time class="story-card-date" datetime="2026-04-14T21:27:44.933Z">APR 14, 2026</time>
+          </div>
+        </a>
+        <a class="story-card reveal delay-3" href="https://www.swampfoxoptics.com/james-megellas-82nd-airborne-wwii" target="_blank" rel="noopener">
+          <div class="story-card-image">
+            <img src="https://cdn.sanity.io/images/21lfjblb/production/d8b3ba7520df37f76cea5d16ad5c3e05901c6f89-1280x1280.jpg?w=800&auto=format" alt="The Last Man Out: James &quot;Maggie&quot; Megellas" loading="lazy" />
+          </div>
+          <div class="story-card-body">
+            <span class="story-card-tag">American Warrior</span>
+            <h3 class="story-card-title">The Last Man Out: James &quot;Maggie&quot; Megellas</h3>
+            <p class="story-card-excerpt">James Megellas was lethal enough to sprint at a 45-ton Panther tank and kill it with two grenades. He earned the Distinguished Service Cross for running through mortar fire with a wounded man over his shoulder, firing a Thompson one-handed to suppress the enemy on the way out. He did it more than once. The most decorated officer in the history of the 82nd Airborne Division didn't lead from behind. He led from the front, in every battle, in every storm, carrying the men who couldn't carry themselves.</p>
+            <time class="story-card-date" datetime="2026-04-07T20:29:34.945Z">APR 7, 2026</time>
+          </div>
+        </a>
+        <!-- POSTS_INJECT_END -->
+      </div>
+      <a class="stories-view-all reveal"
+         href="https://www.swampfoxoptics.com/blog?category=american+warrior"
+         target="_blank" rel="noopener">View all stories →</a>
     </div>
   </section>
 

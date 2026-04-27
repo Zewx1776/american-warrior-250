@@ -1,0 +1,7 @@
+{
+  "name": "american-warrior-landing",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-posts.js"
+  }
+}
