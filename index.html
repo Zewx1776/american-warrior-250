@@ -1642,8 +1642,7 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .nav-cta { display: none; }
-      .nav { background: var(--black); }
-      .nav.scrolled { background: var(--black); backdrop-filter: none; }
+      .nav.menu-open { background: var(--black); backdrop-filter: none; }
     }
     @media (max-width: 640px) {
       .hero-scroll { display: none; }
@@ -2753,15 +2752,17 @@
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
       mobileMenu.classList.toggle('active');
+      nav.classList.toggle('menu-open');
       const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
       hamburger.setAttribute('aria-expanded', !isExpanded);
     });
-    
+
     // Close mobile menu when clicking a link
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         mobileMenu.classList.remove('active');
+        nav.classList.remove('menu-open');
         hamburger.setAttribute('aria-expanded', 'false');
       });
     });
