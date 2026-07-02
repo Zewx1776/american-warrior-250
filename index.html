@@ -1104,6 +1104,9 @@
       transform: scale(1.06);
       filter: grayscale(0%);
     }
+    .grid-item.on-white .grid-item-img { background: #ffffff; }
+    .grid-item.on-white .grid-item-img img { object-fit: contain; padding: 12%; filter: none; }
+    .grid-item.on-white:hover .grid-item-img img { filter: none; }
     .grid-item-overlay {
       position: absolute;
       inset: 0;
@@ -2480,6 +2483,21 @@
 
     <div class="collection-grid">
 
+      <!-- Mega Patch Pack -->
+      <a href="https://www.swampfoxoptics.com/american-warrior-mega-patch-pack" class="grid-item on-white" aria-label="Shop American Warrior Mega Patch Pack - $20.00">
+        <div class="grid-item-img">
+          <img src="product photos/bundle/patch-pack-main.png" alt="American Warrior Mega Patch Pack - all campaign PVC patches" loading="lazy" onerror="this.onerror=null;this.src='product photos/_placeholder.svg'" />
+          <div class="grid-item-overlay"></div>
+          <div class="grid-item-hover-cta">
+            <span class="btn-product-primary">Shop Now</span>
+          </div>
+        </div>
+        <div class="grid-item-info">
+          <p class="grid-item-name">Mega Patch Pack</p>
+          <p class="grid-item-price">$20.00</p>
+        </div>
+      </a>
+
       <!-- Revolutionary War Shirt -->
       <a href="https://www.swampfoxoptics.com/revolutionary-warrior-t-shirt" class="grid-item" aria-label="Shop Revolutionary Warrior T-Shirt - $24.99">
         <div class="grid-item-img">
@@ -2777,21 +2795,6 @@
         <div class="grid-item-info">
           <p class="grid-item-name">Join Or Find Out Patch</p>
           <p class="grid-item-price">$6.99</p>
-        </div>
-      </a>
-
-      <!-- Mega Patch Pack -->
-      <a href="https://www.swampfoxoptics.com/american-warrior-mega-patch-pack" class="grid-item" aria-label="Shop American Warrior Mega Patch Pack - $20.00">
-        <div class="grid-item-img">
-          <img src="product photos/bundle/patch-pack-main.png" alt="American Warrior Mega Patch Pack - all campaign PVC patches" loading="lazy" onerror="this.onerror=null;this.src='product photos/_placeholder.svg'" />
-          <div class="grid-item-overlay"></div>
-          <div class="grid-item-hover-cta">
-            <span class="btn-product-primary">Shop Now</span>
-          </div>
-        </div>
-        <div class="grid-item-info">
-          <p class="grid-item-name">Mega Patch Pack</p>
-          <p class="grid-item-price">$20.00</p>
         </div>
       </a>
 
