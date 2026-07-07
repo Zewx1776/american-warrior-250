@@ -666,29 +666,62 @@
       display: block;
     }
 
-    /* ─── FEATURE CAROUSEL (bundle + patch pack) ─────────────────── */
-    .bundle-feature { padding:90px 0; background:var(--charcoal); border-top:1px solid rgba(200,168,75,0.1); border-bottom:1px solid rgba(200,168,75,0.1); position:relative; }
-    .bundle-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
-    .bundle-carousel { position:relative; }
-    .bundle-viewport { position:relative; overflow:hidden; border:1px solid rgba(200,168,75,0.18); background:var(--gray-900); }
-    .bundle-track { display:flex; transition:transform 0.55s var(--ease-out-expo); }
-    .bundle-slide { min-width:100%; aspect-ratio:1/1; background:var(--gray-900); }
-    .bundle-slide img { width:100%; height:100%; object-fit:cover; display:block; }
-    .bundle-slide.on-white { background:#ffffff; }
-    .bundle-slide.on-white img { object-fit:contain; padding:6%; }
-    .bundle-arrow { position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border:1px solid rgba(245,209,115,0.5); background:rgba(6,6,6,0.6); color:var(--gold); display:flex; align-items:center; justify-content:center; font-size:22px; line-height:1; z-index:2; -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); transition:background 0.2s, color 0.2s, border-color 0.2s; }
-    .bundle-arrow:hover { background:var(--gold); color:var(--black); border-color:var(--gold); }
-    .bundle-arrow.prev { left:12px; }
-    .bundle-arrow.next { right:12px; }
-    .bundle-dots { display:flex; gap:8px; justify-content:center; margin-top:16px; }
-    .bundle-dot { width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.22); border:none; padding:0; cursor:pointer; transition:background 0.2s, transform 0.2s; }
-    .bundle-dot.active { background:var(--gold); transform:scale(1.35); }
-    .bundle-info h2 { font-family:var(--font-display); font-size:clamp(32px,4.5vw,56px); font-weight:700; text-transform:uppercase; line-height:0.95; margin-bottom:10px; }
-    .bundle-meta { font-family:var(--font-head); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray-500); }
-    .bundle-price { font-family:var(--font-display); font-size:clamp(28px,3.2vw,42px); font-weight:700; color:var(--gold); margin:14px 0 24px; line-height:1; }
-    .bundle-info p:not(.section-label):not(.bundle-meta):not(.bundle-price) { color:var(--gray-300); font-size:clamp(14px,1.5vw,16px); line-height:1.8; margin-bottom:18px; }
-    .bundle-info p strong { color:var(--white); font-weight:500; }
-    .bundle-info p strong.gold, .bundle-info strong.gold { color:var(--gold); }
+    /* ─── SECTION: CAMPAIGN ARC INTRO ────────────────────────────── */
+    .arc-intro {
+      padding: 80px 0;
+      background: var(--charcoal);
+      border-top: 1px solid rgba(200,168,75,0.1);
+      border-bottom: 1px solid rgba(200,168,75,0.1);
+    }
+    .arc-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .arc-intro-img {
+      position: relative;
+    }
+    .arc-intro-img img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      filter: grayscale(30%) contrast(1.1);
+    }
+    .arc-intro-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200,168,75,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .img-border-frame {
+      position: absolute;
+      top: -8px; left: -8px;
+      right: 8px; bottom: 8px;
+      border: 1px solid rgba(200,168,75,0.25);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .arc-intro-text .section-label { text-align: left; }
+    .arc-intro-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.5vw, 58px);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 24px;
+    }
+    .arc-intro-text p {
+      color: var(--gray-300);
+      font-size: clamp(14px, 1.5vw, 17px);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .arc-intro-text p strong {
+      color: var(--white);
+      font-weight: 500;
+    }
 
     /* ─── PULLQUOTE ──────────────────────────────────────────────── */
     .pullquote-section {
@@ -1104,9 +1137,6 @@
       transform: scale(1.06);
       filter: grayscale(0%);
     }
-    .grid-item.on-white .grid-item-img { background: #ffffff; }
-    .grid-item.on-white .grid-item-img img { object-fit: contain; padding: 12%; filter: none; }
-    .grid-item.on-white:hover .grid-item-img img { filter: none; }
     .grid-item-overlay {
       position: absolute;
       inset: 0;
@@ -1589,7 +1619,8 @@
       .hero-logo-side img { max-width: 60%; margin: 0 auto; }
       .hero-text-side { text-align: center; }
       .hero-ctas { justify-content: center; }
-      .bundle-grid { grid-template-columns:1fr; gap:40px; }
+      .arc-intro-grid { grid-template-columns: 1fr; gap: 40px; }
+      .arc-intro-img img { height: 360px; }
       .product-pair { grid-template-columns: 1fr; }
       .product-pair.reverse { direction: ltr; }
       .product-visual-inner { min-height: 420px; }
@@ -1689,19 +1720,23 @@
         <img src="mainlogo.png" alt="American Warrior 250" />
       </div>
       <div class="hero-text-side">
-        <p class="hero-eyebrow">The 250th Independence Day · Now Live</p>
+        <p class="hero-eyebrow">Swampfox Optics · Est. 1776 · America's Semiquincentennial</p>
         <h1 class="hero-title">
-          American Warrior
-          <em>Sale Is Live</em>
+          American
+          <em>Warrior</em>
         </h1>
-        <p class="hero-sub">Every Era · Every Drop · On Sale</p>
+        <p class="hero-sub">250 Years · Every War · One Spirit</p>
         <p class="hero-tagline">
-          Our biggest sale of the year runs through Monday 7/6. Up to 31% off across the catalog: the American Warrior Bundle, Raider at $199, Patriot II and Warhawk scope bundles, pistol dots, and an extra 20% off Hot Deals, plus 50% off all 250 Series merch.
+          Two and a half centuries of lethality. From the flintlock muskets of the Revolution to the suppressed carbines of today - the tools change. The spirit does not.
         </p>
         <div class="hero-ctas">
-          <a href="https://www.swampfoxoptics.com/shop-july-4th" class="btn-primary" aria-label="Shop the American Warrior sale">
-            Shop the Sale
+          <a href="https://www.swampfoxoptics.com/gearapparel" class="btn-primary" aria-label="Shop the American Warrior collection">
+            Shop the Collection
           </a>
+          <button class="btn-secondary" id="heroWatchBtn" aria-label="Watch the American Warrior campaign video">
+            <span class="btn-play-icon" aria-hidden="true"></span>
+            Watch the Film
+          </button>
         </div>
       </div>
     </div>
@@ -1709,41 +1744,6 @@
     <div class="hero-scroll" aria-hidden="true">
       <span>Scroll</span>
       <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ─── AMERICAN WARRIOR BUNDLE ────────────────────────────────── -->
-  <section class="bundle-feature" id="bundle" aria-labelledby="bundle-head">
-    <div class="container">
-      <div class="bundle-grid">
-        <div class="bundle-carousel reveal-left">
-          <div class="bundle-viewport">
-            <div class="bundle-track">
-              <div class="bundle-slide"><img src="product photos/bundle/awb-box.jpg" alt="American Warrior Bundle commemorative box" loading="lazy" /></div>
-              <div class="bundle-slide on-white"><img src="product photos/bundle/awb-scope.png" alt="Arrowhead 1-10x24 LPVO with Liberty II dot on cantilever mount" loading="lazy" /></div>
-              <div class="bundle-slide"><img src="product photos/bundle/awb-lifestyle.jpg" alt="Shooter running the American Warrior Bundle on a rifle" loading="lazy" /></div>
-            </div>
-            <button class="bundle-arrow prev" aria-label="Previous image">&#8249;</button>
-            <button class="bundle-arrow next" aria-label="Next image">&#8250;</button>
-          </div>
-          <div class="bundle-dots">
-            <button class="bundle-dot active" aria-label="Go to image 1"></button>
-            <button class="bundle-dot" aria-label="Go to image 2"></button>
-            <button class="bundle-dot" aria-label="Go to image 3"></button>
-          </div>
-        </div>
-        <div class="bundle-info reveal-right">
-          <p class="section-label" style="text-align:left;">Semiquincentennial Limited Edition Bundle</p>
-          <h2 id="bundle-head">American Warrior<br /><span class="gold">Bundle</span></h2>
-          <p class="bundle-meta">SKU: SWB110-ARL-FDM-L2R</p>
-          <p class="bundle-price">$495.00</p>
-          <p>This is the flagship of the <strong class="gold">American Warrior 250 collection</strong> - our tribute to 250 years of the American fighter. Every bundle ships in a custom commemorative box wrapped in original artwork made for America's 250th birthday, and includes the American Warrior 250 Patch.</p>
-          <p>Two optics. One rifle. No compromise. The <strong>Arrowhead 1-10x24 LPVO</strong> pairs with a Liberty II dot riding at 12 o'clock on a purpose-built cantilever mount - dial out to 10x for distance, then snap up to the dot for fast, close-range hits. Scope, mount, dot, and hardware ship together, ready to mount and zero out of the box.</p>
-          <div class="product-ctas" style="margin-top:8px;">
-            <a href="https://www.swampfoxoptics.com/american-warrior-bundle" class="btn-primary">Shop the Bundle</a>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1785,34 +1785,32 @@
     <div class="divider-line"></div>
   </div>
 
-  <!-- ─── AMERICAN WARRIOR MEGA PATCH PACK ───────────────────────── -->
-  <section class="bundle-feature" id="patch-pack" aria-labelledby="patchpack-head">
+  <!-- ─── ARC INTRO ─────────────────────────────────────────────────── -->
+  <section class="arc-intro" aria-labelledby="arc-intro-head">
     <div class="container">
-      <div class="bundle-grid">
-        <div class="bundle-info reveal-left">
-          <p class="section-label" style="text-align:left;">Limited Edition · The Finale Drop</p>
-          <h2 id="patchpack-head">American Warrior<br /><span class="gold">Mega Patch Pack</span></h2>
-          <p class="bundle-meta">SKU: SFP-AWPP · PVC with Hook-and-Loop backing</p>
-          <p class="bundle-price">$20.00</p>
-          <p>Two hundred and fifty years of American fighting in one collection - <strong>every patch from the American Warrior campaign</strong>, from the operators of the Global War on Terror back to the minutemen of 1776. We worked the timeline in reverse, one era at a time, honoring the men who carried the rifle in every fight that built this country and kept it free.</p>
-          <p>The 4th of July marks the end of the run, and this pack is how you own all of it. Offered complete only for the finale - <strong>when the run ends, it is gone. Hard to Kill. Forever Free.</strong></p>
-          <div class="product-ctas" style="margin-top:8px;">
-            <a href="https://www.swampfoxoptics.com/american-warrior-mega-patch-pack" class="btn-primary">Shop the Patch Pack</a>
-          </div>
+      <div class="arc-intro-grid">
+        <div class="arc-intro-img reveal-left">
+          <img src="product photos/compilationproductshot.png" alt="American Warrior collection - all patches and shirts" loading="lazy" />
+          <div class="img-border-frame" aria-hidden="true"></div>
         </div>
-        <div class="bundle-carousel reveal-right">
-          <div class="bundle-viewport">
-            <div class="bundle-track">
-              <div class="bundle-slide on-white"><img src="product photos/bundle/patch-pack-main.png" alt="All American Warrior campaign PVC patches laid out" loading="lazy" /></div>
-              <div class="bundle-slide"><img src="product photos/bundle/patch-pack-lifestyle.jpg" alt="American Warrior patches on a camo panel" loading="lazy" /></div>
-            </div>
-            <button class="bundle-arrow prev" aria-label="Previous image">&#8249;</button>
-            <button class="bundle-arrow next" aria-label="Next image">&#8250;</button>
-          </div>
-          <div class="bundle-dots">
-            <button class="bundle-dot active" aria-label="Go to image 1"></button>
-            <button class="bundle-dot" aria-label="Go to image 2"></button>
-          </div>
+        <div class="arc-intro-text reveal-right">
+          <p class="section-label">The Campaign Arc</p>
+          <h2 id="arc-intro-head">
+            The First Arc:<br />
+            <span class="gold">GWOT Era</span>
+          </h2>
+          <p>
+            The campaign starts in the present and rewinds. Arc One opens with the generation that answered the call after the towers fell - the operators of the Global War on Terror. Sand, sweat, and steel. Two decades proving the American spirit is hard to kill.
+          </p>
+          <p>
+            Each arc drops limited edition shirts and patches. <strong>Once they're gone, they're gone.</strong> The GWOT era is now. Claim your piece of history before it's gone.
+          </p>
+          <p>
+            The lineage runs through every conflict. Minutemen. Doughboys. G.I.s. Operators. The uniform changes. The DNA does not.
+          </p>
+          <a href="https://www.swampfoxoptics.com/gearapparel" class="btn-primary" style="margin-top:16px; display:inline-flex; align-items:center; gap:10px;">
+            Shop Arc One
+          </a>
         </div>
       </div>
     </div>
@@ -2482,21 +2480,6 @@
     </div>
 
     <div class="collection-grid">
-
-      <!-- Mega Patch Pack -->
-      <a href="https://www.swampfoxoptics.com/american-warrior-mega-patch-pack" class="grid-item on-white" aria-label="Shop American Warrior Mega Patch Pack - $20.00">
-        <div class="grid-item-img">
-          <img src="product photos/bundle/patch-pack-main.png" alt="American Warrior Mega Patch Pack - all campaign PVC patches" loading="lazy" onerror="this.onerror=null;this.src='product photos/_placeholder.svg'" />
-          <div class="grid-item-overlay"></div>
-          <div class="grid-item-hover-cta">
-            <span class="btn-product-primary">Shop Now</span>
-          </div>
-        </div>
-        <div class="grid-item-info">
-          <p class="grid-item-name">Mega Patch Pack</p>
-          <p class="grid-item-price">$20.00</p>
-        </div>
-      </a>
 
       <!-- Revolutionary War Shirt -->
       <a href="https://www.swampfoxoptics.com/revolutionary-warrior-t-shirt" class="grid-item" aria-label="Shop Revolutionary Warrior T-Shirt - $24.99">
@@ -3205,27 +3188,6 @@
       });
     }, { threshold: 0.5 });
     statNums.forEach(n => statObserver.observe(n));
-
-    /* ── Feature carousels (bundle + patch pack) ─────────────────── */
-    document.querySelectorAll('.bundle-carousel').forEach((car) => {
-      const track = car.querySelector('.bundle-track');
-      if (!track) return;
-      const count = track.children.length;
-      const dots = Array.from(car.querySelectorAll('.bundle-dot'));
-      let idx = 0, timer = null;
-      const go = (i) => {
-        idx = (i + count) % count;
-        track.style.transform = 'translateX(' + (-idx * 100) + '%)';
-        dots.forEach((d, j) => d.classList.toggle('active', j === idx));
-      };
-      const reset = () => { if (timer) clearInterval(timer); timer = setInterval(() => go(idx + 1), 6000); };
-      const prev = car.querySelector('.bundle-arrow.prev');
-      const next = car.querySelector('.bundle-arrow.next');
-      prev && prev.addEventListener('click', () => { go(idx - 1); reset(); });
-      next && next.addEventListener('click', () => { go(idx + 1); reset(); });
-      dots.forEach((d, j) => d.addEventListener('click', () => { go(j); reset(); }));
-      reset();
-    });
   </script>
 
 </body>
