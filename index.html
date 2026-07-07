@@ -723,6 +723,30 @@
       font-weight: 500;
     }
 
+    /* ─── FEATURE CAROUSEL (bundle) ──────────────────────────────── */
+    .bundle-feature { padding:90px 0; background:var(--charcoal); border-top:1px solid rgba(200,168,75,0.1); border-bottom:1px solid rgba(200,168,75,0.1); position:relative; }
+    .bundle-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+    .bundle-carousel { position:relative; }
+    .bundle-viewport { position:relative; overflow:hidden; border:1px solid rgba(200,168,75,0.18); background:var(--gray-900); }
+    .bundle-track { display:flex; transition:transform 0.55s var(--ease-out-expo); }
+    .bundle-slide { min-width:100%; aspect-ratio:1/1; background:var(--gray-900); }
+    .bundle-slide img { width:100%; height:100%; object-fit:cover; display:block; }
+    .bundle-slide.on-white { background:#ffffff; }
+    .bundle-slide.on-white img { object-fit:contain; padding:6%; }
+    .bundle-arrow { position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border:1px solid rgba(245,209,115,0.5); background:rgba(6,6,6,0.6); color:var(--gold); display:flex; align-items:center; justify-content:center; font-size:22px; line-height:1; z-index:2; -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); transition:background 0.2s, color 0.2s, border-color 0.2s; }
+    .bundle-arrow:hover { background:var(--gold); color:var(--black); border-color:var(--gold); }
+    .bundle-arrow.prev { left:12px; }
+    .bundle-arrow.next { right:12px; }
+    .bundle-dots { display:flex; gap:8px; justify-content:center; margin-top:16px; }
+    .bundle-dot { width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.22); border:none; padding:0; cursor:pointer; transition:background 0.2s, transform 0.2s; }
+    .bundle-dot.active { background:var(--gold); transform:scale(1.35); }
+    .bundle-info h2 { font-family:var(--font-display); font-size:clamp(32px,4.5vw,56px); font-weight:700; text-transform:uppercase; line-height:0.95; margin-bottom:10px; }
+    .bundle-meta { font-family:var(--font-head); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray-500); }
+    .bundle-price { font-family:var(--font-display); font-size:clamp(28px,3.2vw,42px); font-weight:700; color:var(--gold); margin:14px 0 24px; line-height:1; }
+    .bundle-info p:not(.section-label):not(.bundle-meta):not(.bundle-price) { color:var(--gray-300); font-size:clamp(14px,1.5vw,16px); line-height:1.8; margin-bottom:18px; }
+    .bundle-info p strong { color:var(--white); font-weight:500; }
+    .bundle-info p strong.gold, .bundle-info strong.gold { color:var(--gold); }
+
     /* ─── PULLQUOTE ──────────────────────────────────────────────── */
     .pullquote-section {
       padding: 100px 0 50px;
@@ -1621,6 +1645,7 @@
       .hero-ctas { justify-content: center; }
       .arc-intro-grid { grid-template-columns: 1fr; gap: 40px; }
       .arc-intro-img img { height: 360px; }
+      .bundle-grid { grid-template-columns:1fr; gap:40px; }
       .product-pair { grid-template-columns: 1fr; }
       .product-pair.reverse { direction: ltr; }
       .product-visual-inner { min-height: 420px; }
@@ -1744,6 +1769,41 @@
     <div class="hero-scroll" aria-hidden="true">
       <span>Scroll</span>
       <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── AMERICAN WARRIOR BUNDLE ────────────────────────────────── -->
+  <section class="bundle-feature" id="bundle" aria-labelledby="bundle-head">
+    <div class="container">
+      <div class="bundle-grid">
+        <div class="bundle-carousel reveal-left">
+          <div class="bundle-viewport">
+            <div class="bundle-track">
+              <div class="bundle-slide"><img src="product photos/bundle/awb-box.jpg" alt="American Warrior Bundle commemorative box" loading="lazy" /></div>
+              <div class="bundle-slide on-white"><img src="product photos/bundle/awb-scope.png" alt="Arrowhead 1-10x24 LPVO with Liberty II dot on cantilever mount" loading="lazy" /></div>
+              <div class="bundle-slide"><img src="product photos/bundle/awb-lifestyle.jpg" alt="Shooter running the American Warrior Bundle on a rifle" loading="lazy" /></div>
+            </div>
+            <button class="bundle-arrow prev" aria-label="Previous image">&#8249;</button>
+            <button class="bundle-arrow next" aria-label="Next image">&#8250;</button>
+          </div>
+          <div class="bundle-dots">
+            <button class="bundle-dot active" aria-label="Go to image 1"></button>
+            <button class="bundle-dot" aria-label="Go to image 2"></button>
+            <button class="bundle-dot" aria-label="Go to image 3"></button>
+          </div>
+        </div>
+        <div class="bundle-info reveal-right">
+          <p class="section-label" style="text-align:left;">Semiquincentennial Limited Edition Bundle</p>
+          <h2 id="bundle-head">American Warrior<br /><span class="gold">Bundle</span></h2>
+          <p class="bundle-meta">SKU: SWB110-ARL-FDM-L2R</p>
+          <p class="bundle-price">$599.00</p>
+          <p>This is the flagship of the <strong class="gold">American Warrior 250 collection</strong> - our tribute to 250 years of the American fighter. Every bundle ships in a custom commemorative box wrapped in original artwork made for America's 250th birthday, and includes the American Warrior 250 Patch.</p>
+          <p>Two optics. One rifle. No compromise. The <strong>Arrowhead 1-10x24 LPVO</strong> pairs with a Liberty II dot riding at 12 o'clock on a purpose-built cantilever mount - dial out to 10x for distance, then snap up to the dot for fast, close-range hits. Scope, mount, dot, and hardware ship together, ready to mount and zero out of the box.</p>
+          <div class="product-ctas" style="margin-top:8px;">
+            <a href="https://www.swampfoxoptics.com/american-warrior-bundle" class="btn-primary">Shop the Bundle</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -3188,6 +3248,27 @@
       });
     }, { threshold: 0.5 });
     statNums.forEach(n => statObserver.observe(n));
+
+    /* ── Feature carousel (bundle) ───────────────────────────────── */
+    document.querySelectorAll('.bundle-carousel').forEach((car) => {
+      const track = car.querySelector('.bundle-track');
+      if (!track) return;
+      const count = track.children.length;
+      const dots = Array.from(car.querySelectorAll('.bundle-dot'));
+      let idx = 0, timer = null;
+      const go = (i) => {
+        idx = (i + count) % count;
+        track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+        dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+      };
+      const reset = () => { if (timer) clearInterval(timer); timer = setInterval(() => go(idx + 1), 6000); };
+      const prev = car.querySelector('.bundle-arrow.prev');
+      const next = car.querySelector('.bundle-arrow.next');
+      prev && prev.addEventListener('click', () => { go(idx - 1); reset(); });
+      next && next.addEventListener('click', () => { go(idx + 1); reset(); });
+      dots.forEach((d, j) => d.addEventListener('click', () => { go(j); reset(); }));
+      reset();
+    });
   </script>
 
 </body>
